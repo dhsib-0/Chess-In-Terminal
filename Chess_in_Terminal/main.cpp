@@ -1,12 +1,14 @@
 #include <iostream>
-
+#include <cctype>
 #include <limits>
 #include "Caballo.h"
-
+#include "Torre.h"
+#include "Alfil.h""
 using namespace std;
 void inicializar();
 void jugar();
 void print();
+bool team();
 
 const int t = 8;
 const char libre ='*';
@@ -14,6 +16,7 @@ char tablero[t][t];
 
 int main(){
     int op =0;
+    bool cambio = true;
     do {
     cout<< string(4,'-')<<"CHESS IN TERMINAL 2.0"<< string(4,'-')<<"\n";
     cout<<"1. Jugar\n";
@@ -94,10 +97,27 @@ void jugar(){
         }
     case 'T':
         case 't':{
+        Torre t (fil,col);
+
+        if(!t.ver(nfil,ncol)){
+            cout<<"Movimiento Invalido"<<endl;
+        }else{
+            tablero[nfil][ncol] = 't';
+            tablero[fil][col] = libre;
+        }
         break;
     }
     case 'a':
         case 'A':{
+
+            Alfil a (fil,col);
+
+            if(!a.ver(nfil,ncol)){
+                cout<<"Movimiento Invalido"<<endl;
+            }else{
+                tablero[nfil][ncol] = 'a';
+                tablero[fil][col] = libre;
+            }
         break;
     }
     case 'R':
@@ -137,26 +157,50 @@ void inicializar(){
     tablero[0][7] ='T';
 
 // NEGRAS
-    tablero[7][0] ='T';
-    tablero[7][1] ='C';
-    tablero[7][2] ='A';
-    tablero[7][3] ='Q';
-    tablero[7][4] ='K';
-    tablero[7][5] ='A';
-    tablero[7][6] ='C';
-    tablero[7][7] ='T';
+    tablero[7][0] ='t';
+    tablero[7][1] ='c';
+    tablero[7][2] ='a';
+    tablero[7][3] ='q';
+    tablero[7][4] ='k';
+    tablero[7][5] ='a';
+    tablero[7][6] ='c';
+    tablero[7][7] ='t';
 
 
 
 }
 
-void print(){
-    for (int x = 0; x < t; x++) {
-        cout<<"\n";
-        for (int  y = 0; y < t; y++) {
-            cout<<tablero[x][y];
+bool team(int fil,int col){
+    char x = tablero[fil][col];
+    if (isupper(x)){
+        // TRUE = BLANCO
+        return true;
+    }
+    else {
+        // FALSE = NEGRO
+        return false;
+    }
+    return false;
+}
 
+
+void print() {
+    cout << "   ";
+
+    for (int y = 0; y < t; y++) {
+        cout << " " << y;
+    }
+    cout << "\n";
+
+    for (int x = 0; x < t; x++) {
+        cout << x << " |";
+
+        for (int y = 0; y < t; y++) {
+            cout << " " << tablero[x][y];
         }
+
+        cout << " |\n";
     }
 }
+
 

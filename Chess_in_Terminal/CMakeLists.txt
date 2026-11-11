@@ -8,7 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(Chess_Practica main.cpp
     Torre.cpp
     Caballo.h
-    Caballo.cpp)
+    Caballo.cpp
+    Torre.h
+    Alfil.h
+    Alfil.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS Chess_Practica
