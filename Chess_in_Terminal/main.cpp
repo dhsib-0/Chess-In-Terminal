@@ -1,6 +1,7 @@
 #include <iostream>
-#include <vector>
+
 #include <limits>
+#include "Caballo.h"
 
 using namespace std;
 void inicializar();
@@ -46,10 +47,85 @@ int main(){
 }
 void jugar(){
 
+    bool enjuego = true;
+    do{
+
+    int ncol =0;
+    int nfil =0;
+    int col = 0;
+    int fil = 0;
+
     print();
+    cout<<"\n";
+    cout<<"Elija que pieza desea mover :(Fila | Columna):";
+    cin>>fil >>col;
+
+    while(cin.fail() ){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout<<"Elija que pieza desea mover (Fila | Columna)\n";
+        cin>>fil >>col;
+    }
+    cout<<"A que Pocision va mover esta pieza :(Fila | Columna):";
+    cin>>nfil >>ncol;
+
+    while(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout<<"A que Pocision va mover esta pieza :(Fila | Columna):";
+        cin>>nfil >>ncol;
+
+    }
+
+
+
+    switch(tablero[fil][col]){
+    case 'C':
+        case'c':{
+            Caballo c (fil,col);
+
+        if(!c.ver(nfil,ncol)){
+                cout<<"Movimiento Invalido"<<endl;
+        }else{
+            tablero[nfil][ncol] = 'c';
+            tablero[fil][col] = libre;
+        }
+        break;
+        }
+    case 'T':
+        case 't':{
+        break;
+    }
+    case 'a':
+        case 'A':{
+        break;
+    }
+    case 'R':
+        case 'r':{
+        break;
+    }
+    case 'Q' :
+         case 'q':{
+        break;
+    }
+    case 'P':
+        case 'p':{
+        break;
+    }
+
+    }
+
+    }while (enjuego);
 
 }
 void inicializar(){
+    for (int x = 0; x < t; x++) {
+
+        for (int  y = 0; y < t; y++) {
+            tablero[x][y] = libre;
+
+        }
+    }
 //BLANCAS
     tablero[0][0] ='T';
     tablero[0][1] ='C';
