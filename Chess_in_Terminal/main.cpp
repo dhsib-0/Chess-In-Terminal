@@ -3,7 +3,11 @@
 #include <limits>
 #include "Caballo.h"
 #include "Torre.h"
-#include "Alfil.h""
+#include "Alfil.h"
+#include "Rey.h"
+#include "Queen.h"
+
+
 using namespace std;
 void inicializar();
 void jugar();
@@ -122,10 +126,28 @@ void jugar(){
     }
     case 'R':
         case 'r':{
+        Rey r (fil,col);
+
+        if(!r.ver(nfil,ncol)){
+            cout<<"Movimiento Invalido"<<endl;
+        }else{
+            tablero[nfil][ncol] = 'r';
+            tablero[fil][col] = libre;
+        }
+
         break;
     }
     case 'Q' :
          case 'q':{
+        Queen q (fil,col);
+
+        if(!q.ver(nfil,ncol)){
+            cout<<"Movimiento Invalido"<<endl;
+        }else{
+            tablero[nfil][ncol] = 'q';
+            tablero[fil][col] = libre;
+        }
+
         break;
     }
     case 'P':
@@ -151,7 +173,7 @@ void inicializar(){
     tablero[0][1] ='C';
     tablero[0][2] ='A';
     tablero[0][3] ='Q';
-    tablero[0][4] ='K';
+    tablero[0][4] ='R';
     tablero[0][5] ='A';
     tablero[0][6] ='C';
     tablero[0][7] ='T';
@@ -161,7 +183,7 @@ void inicializar(){
     tablero[7][1] ='c';
     tablero[7][2] ='a';
     tablero[7][3] ='q';
-    tablero[7][4] ='k';
+    tablero[7][4] ='r';
     tablero[7][5] ='a';
     tablero[7][6] ='c';
     tablero[7][7] ='t';

@@ -1,5 +1,6 @@
 #include "Alfil.h"
 
+
 Alfil::Alfil(int f,int c){
     this->c = c;
     this->f = f;

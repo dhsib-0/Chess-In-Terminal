@@ -11,7 +11,11 @@ add_executable(Chess_Practica main.cpp
     Caballo.cpp
     Torre.h
     Alfil.h
-    Alfil.cpp)
+    Alfil.cpp
+    Rey.h
+    Rey.cpp
+    Queen.h
+    Queen.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS Chess_Practica

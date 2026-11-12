@@ -1,7 +1,5 @@
 #include "Torre.h"
 
-using namespace std;
-
 Torre::Torre(int f, int c){
     this->fila = f;
     this->col = c;
